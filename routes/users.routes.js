@@ -10,6 +10,6 @@ const usersController = new UsersController(); // instantiate class
 router.get("/", usersController.getAllUsers.bind(usersController));
 
 // get user info
-router.get("/:id", usersController.getUserById);
+router.get("/:id", usersController.getUserById.bind(usersController));
 
 export default router;

@@ -1,9 +1,12 @@
 import { supabase } from "../supabase.js"
 
 export class UsersController {
+    constructor() {
+        this.tableName = "users"
+    }
     async getAllUsers(req, res) {
         try {
-            const { data, error } = await supabase.from("users").select("*");
+            const { data, error } = await supabase.from(this.tableName).select("*");
             console.log(data);
             if (error) {
                 return res.status(400).send(error);
@@ -18,7 +21,7 @@ export class UsersController {
         try {
             const { id } = req.params;
             const { data, error } = await supabase
-                .from("users")
+                .from(this.tableName)
                 .select()
                 .eq("id", id);
             if (error) {
