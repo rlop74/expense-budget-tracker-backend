@@ -1,9 +1,16 @@
 import { supabase } from "../supabase.js";
 
 export class ExpenseController {
+    constructor() {
+        this.tableName = "expenses";
+    }
     async getAllExpenses(req, res) {
         try {
-            const { data, error } = await supabase.from("expenses").select("*");
+            const { id } = req.params;
+            const { data, error } = await supabase
+                .from(this.tableName)
+                .select("*")
+                .eq("user_id", id);
             if (error) {
                 return res.status(400).send(error);
             }
@@ -16,7 +23,7 @@ export class ExpenseController {
     async addExpense(req, res) {
         try {
             const { data, error } = await supabase
-                .from("expenses")
+                .from(this.tableName)
                 .insert(req.body)
                 .select();
 
