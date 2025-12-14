@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { supabase } from "../supabase.js";
 import { ExpenseController } from "../controllers/expenses.controller.js";
 
 const router = Router();

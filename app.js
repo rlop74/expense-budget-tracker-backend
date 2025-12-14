@@ -4,6 +4,7 @@ import "dotenv/config";
 
 import ExpensesRouter from "./routes/expenses.routes.js";
 import UsersRouter from "./routes/users.routes.js";
+import SavingsRouter from "./routes/savings.routes.js";
 
 const app = express();
 const PORT = process.env.PORT;
@@ -17,5 +18,6 @@ app.use(
 
 app.use("/expenses", ExpensesRouter);
 app.use("/users", UsersRouter);
+app.use("/savings", SavingsRouter);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

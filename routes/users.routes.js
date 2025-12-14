@@ -1,5 +1,4 @@
 import { Router } from "express";
-import { supabase } from "../supabase.js";
 import { UsersController } from "../controllers/users.controller.js";
 
 const router = Router();
