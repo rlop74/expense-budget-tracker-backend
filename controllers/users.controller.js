@@ -35,4 +35,25 @@ export class UsersController {
             return res.status(400).send(err);
         }
     }
+
+    async updateUserIncome(req, res) {
+        try {
+            const { id } = req.params;
+            const { updatedIncome } = req.body;
+            const { data, error } = await supabase
+                .from(this.tableName)
+                .update({ income: updatedIncome })
+                .eq("auth_id", id);
+
+            if (error) {
+                return res.status(400).send(error);
+            }
+
+            res.status(200).send({
+                message: `Income updated to ${updatedIncome}`,
+            });
+        } catch (err) {
+            return res.status(400).send(err);
+        }
+    }
 }

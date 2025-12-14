@@ -12,4 +12,9 @@ router.get("/", usersController.getAllUsers.bind(usersController));
 // get user info
 router.get("/:id", usersController.getUserById.bind(usersController));
 
+router.post(
+    "/update-income/:id",
+    usersController.updateUserIncome.bind(usersController)
+);
+
 export default router;
