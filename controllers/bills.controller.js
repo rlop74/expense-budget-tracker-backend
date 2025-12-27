@@ -27,7 +27,7 @@ export class BillsController {
             if (error) {
                 return res.status(400).send(error);
             }
-            res.status(200).send(data);
+            res.status(200).send(data[0]);
         } catch (err) {
             return res.status(400).send(err);
         }
