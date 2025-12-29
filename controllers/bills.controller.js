@@ -44,4 +44,14 @@ export class BillsController {
             return res.status(400).send(err);
         }
     }
+
+    async deleteBill(req, res) {
+        const { id } = req.params;
+        try {
+            const response = await supabase.from("bills").delete().eq("id", id);
+            res.status(response.status).send(response);
+        } catch (err) {
+            return res.status(400).send(response);
+        }
+    }
 }
