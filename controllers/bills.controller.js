@@ -32,4 +32,16 @@ export class BillsController {
             return res.status(400).send(err);
         }
     }
+
+    async editBill(req, res) {
+        const { id } = req.params;
+        try {
+            const { data, error } = await supabase
+                .from("bills")
+                .update(req.body)
+                .eq("id", id);
+        } catch (err) {
+            return res.status(400).send(err);
+        }
+    }
 }
