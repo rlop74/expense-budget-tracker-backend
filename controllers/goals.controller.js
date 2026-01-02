@@ -22,7 +22,7 @@ export class GoalsController {
     async addGoal(req, res) {
         try {
             const { data, error } = await supabase
-                .from("goals")
+                .from(this.tableName)
                 .insert(req.body)
                 .select()
                 .single(); // returns only the object instead of putting it in an array
@@ -30,6 +30,21 @@ export class GoalsController {
                 return res.status(400).send(error);
             }
             res.status(200).send(data);
+        } catch (err) {
+            return res.status(400).send(err);
+        }
+    }
+
+    async deleteGoal(req, res) {
+        const { id } = req.params;
+        try {
+            const response = await supabase
+                .from(this.tableName)
+                .delete()
+                .eq("id", id);
+            res.status(response.status).send({
+                message: `User with ID: ${id}, has been deleted`,
+            });
         } catch (err) {
             return res.status(400).send(err);
         }

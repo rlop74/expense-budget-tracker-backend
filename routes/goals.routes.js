@@ -8,5 +8,6 @@ const goalsController = new GoalsController(); // instantiate class
 
 router.get("/", goalsController.getAllGoals.bind(goalsController));
 router.post("/add-goal", goalsController.addGoal.bind(goalsController));
+router.delete("/delete-goal/:id", goalsController.deleteGoal.bind(goalsController));
 
 export default router;
