@@ -13,5 +13,6 @@ router.delete(
     goalsController.deleteGoal.bind(goalsController)
 );
 router.patch("/edit-goal/:id", goalsController.editGoal.bind(goalsController));
+router.patch("/add-amount/:id", goalsController.addAmount.bind(goalsController));
 
 export default router;

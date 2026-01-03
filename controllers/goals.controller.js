@@ -65,4 +65,20 @@ export class GoalsController {
             return res.status(400).send(err);
         }
     }
+
+    async addAmount(req, res) {
+        const { id } = req.params;
+        try {
+            const { error } = await supabase
+                .from(this.tableName)
+                .update(req.body)
+                .eq("id", id);
+            if (error) {
+                return res.status(400).send(error);
+            }
+            res.status(200).send({ message: "Current amount updated" });
+        } catch (err) {
+            return res.status(400).send(err);
+        }
+    }
 }
