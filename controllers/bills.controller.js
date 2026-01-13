@@ -39,7 +39,13 @@ export class BillsController {
             const { data, error } = await supabase
                 .from("bills")
                 .update(req.body)
-                .eq("id", id);
+                .eq("id", id)
+                .select()
+                .single();
+            if (error) {
+                return res.status(400).send(error);
+            }
+            res.status(200).send(data);
         } catch (err) {
             return res.status(400).send(err);
         }
