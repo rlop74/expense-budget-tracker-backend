@@ -7,6 +7,7 @@ import UsersRouter from "./routes/users.routes.js";
 import SavingsRouter from "./routes/savings.routes.js";
 import BillsRouter from "./routes/bills.routes.js";
 import GoalsRouter from "./routes/goals.routes.js";
+import BudgetRouter from "./routes/budget.routes.js";
 
 const app = express();
 const PORT = process.env.PORT;
@@ -23,5 +24,6 @@ app.use("/users", UsersRouter);
 app.use("/savings", SavingsRouter);
 app.use("/bills", BillsRouter);
 app.use("/goals", GoalsRouter);
+app.use("/budget", BudgetRouter);
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
